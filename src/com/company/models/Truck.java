@@ -1,4 +1,4 @@
-package com.company;
+package com.company.models;
 import com.company.State;
 
 import java.sql.Driver;
