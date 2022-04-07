@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Chevrolet Colorado",
+    "state": "ON_BASE"
+  },
+  {
+    "id": 2,
+    "name": "Toyota Tundra",
+    "state": "ON_ROUTE"
+  },
+  {
+    "id": 3,
+    "name": "Nissan Frontier",
+    "state": "ON_REPAIR"
+  }
+]
