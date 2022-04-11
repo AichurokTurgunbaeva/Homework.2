@@ -2,92 +2,70 @@ package com.company;
 
 import com.company.models.Driver;
 import com.company.models.Truck;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.company.services.ServiceImplements;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
+import java.util.Scanner;
 
 public class Main {
-    public static final GsonBuilder BUILDER = new GsonBuilder();
-    public static final Gson GSON = BUILDER.setPrettyPrinting().create();
-    public static final Path WRITE_PATH = Paths.get("./truck.json");
-    public static final Path WRITE_PATH1 = Paths.get("./driver.json");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
 
         Truck[] trucks = {
-                Truck.makeTruck(1, "Chevrolet Colorado", null, State.ON_BASE),
-                Truck.makeTruck(2, "Toyota Tundra", null, State.ON_ROUTE),
-                Truck.makeTruck(3, "Nissan Frontier", null, State.ON_REPAIR)
+                new Truck(1, "Chevrolet", null, State.ON_BASE),
+                new Truck(2, "Toyota ", null, State.ON_ROUTE),
+                new Truck(3, "Nissan ", null, State.ON_REPAIR)
         };
+
         Driver[] drivers = {
-                Driver.makeDriver("dr-1", "Sasha", null),
-                Driver.makeDriver("dr-2", "Petya", null),
-                Driver.makeDriver("dr-3", "Kolya", null)
+                new Driver("dr-1", "Sasha", null),
+                new Driver("dr-2", "Petya", null),
+                new Driver("dr-3", "Kolya", null)
         };
 
-        String jsonTrucks = GSON.toJson(trucks);
-        write(jsonTrucks);
-        System.out.println(readFile());
-        String jsonDrivers = GSON.toJson(drivers);
-        //  System.out.println(json);
+        print(trucks);
+        print(drivers);
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-        writeDriver(jsonDrivers);
-        System.out.println(readFileDriver());
-
-    }
-
-    private static void write(String obj) {
-        Path write = Paths.get(String.valueOf(WRITE_PATH));
-        try {
-            Files.writeString(write, obj, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private static void writeDriver(String obj) {
-        Path write = Paths.get(String.valueOf(WRITE_PATH1));
-        try {
-            Files.writeString(write, obj, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static String readFile() {
-        String json = " ";
-        try {
-            FileReader reader = new FileReader(String.valueOf(WRITE_PATH));
-            int a;
-            while ((a = reader.read()) != -1) {
-                json += (char) a;
+            System.out.println("Choose one of the trucks: ");
+            int input = scanner.nextInt();
+            scanner.nextLine();
+            Driver.getInfo(trucks[input - 1]);
+            ServiceImplements service = new ServiceImplements();
+            getInstruction();
+            String action = scanner.nextLine();
+            switch (action) {
+                case "1" -> service.changeDriver(trucks[input - 1], drivers[input - 1]);
+                case "2" -> service.startDriving(trucks[input - 1], drivers[input - 1]);
+                case "3" -> service.startRepair(trucks[input - 1], drivers[input - 1]);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            print(trucks);
+            print(drivers);
         }
-        return json;
+
+
+    public static void print(Truck[] trucks) {
+        System.out.println("~~~~~~~~~~~~ * TRUCKS * ~~~~~~~~~~~~");
+        System.out.println(" # |    Bus    |  Driver  |  State");
+        System.out.println("---+-----------+----------+---------");
+        for (Truck truck : trucks) {
+            System.out.println(truck);
+        }
     }
 
-    private static String readFileDriver() {
-        String json = " ";
-        try {
-            FileReader reader = new FileReader(String.valueOf(WRITE_PATH1));
-            int a;
-            while ((a = reader.read()) != -1) {
-                json += (char) a;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void print(Driver[] drivers) {
+        System.out.println("~~~~~~~~~~ * DRIVERS * ~~~~~~~~~~~~~");
+        System.out.println("     #    |   Driver   |   Bus      ");
+        System.out.println("----------+------------+------------");
+        for (Driver driver : drivers) {
+            System.out.println(driver);
         }
-        return json;
+    }
+
+    public static void getInstruction() {
+        System.out.println("Press to 1 to change driver");
+        System.out.println("Press to 2 to start driving");
+        System.out.println("Press to 3 to start repair");
     }
 }
