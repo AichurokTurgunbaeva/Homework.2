@@ -56,7 +56,7 @@ public class Main {
 
         public static void print (Driver[]drivers){
             System.out.println("~~~~~~~~~~ * DRIVERS * ~~~~~~~~~~~~~");
-            System.out.println("     #    |   Driver   |   Bus      ");
+            System.out.println("     #    |   Driver   |   Truck      ");
             System.out.println("----------+------------+------------");
             for (Driver driver : drivers) {
                 System.out.println(driver);
