@@ -39,7 +39,7 @@ public class Driver {
         this.id = id;
     }
 
-    public Driver getDriver() {
+    public String getDriver() {
         return getDriver();
     }
 
