@@ -1,17 +1,19 @@
 [
   {
     "id": 1,
-    "name": "Chevrolet Colorado",
+    "name": "Chevrolet",
     "state": "ON_BASE"
   },
   {
     "id": 2,
-    "name": "Toyota Tundra",
-    "state": "ON_ROUTE"
+    "name": "Toyota ",
+    "state": "ON_BASE"
   },
   {
     "id": 3,
-    "name": "Nissan Frontier",
-    "state": "ON_REPAIR"
+    "name": "Nissan ",
+    "state": "ON_BASE"
+  }
+]"state": "ON_REPAIR"
   }
 ]
