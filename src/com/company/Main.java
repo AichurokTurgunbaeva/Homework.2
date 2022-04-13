@@ -30,7 +30,7 @@ public class Main {
             System.out.println("Choose one of the trucks: ");
             int input = scanner.nextInt();
             scanner.nextLine();
-            Driver.getInfo(trucks[input - 1]);
+            Driver.getInfo(trucks[input - 1]); // bul jerde siz. trucktyn idsine emes turgan indexine karap alyptyrsyz
             Truck service = new Truck();
             getInstruction();
             String action = scanner.nextLine();
@@ -38,6 +38,7 @@ public class Main {
                 case "1" -> service.changeDriver(trucks[input - 1], drivers[input - 1]);
                 case "2" -> service.startDriving(trucks[input - 1], drivers[input - 1]);
                 case "3" -> service.startRepair(trucks[input - 1], drivers[input - 1]);
+                    //default kerek
             }
 
             print(trucks);
