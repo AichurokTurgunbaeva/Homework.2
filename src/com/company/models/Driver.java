@@ -11,9 +11,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class Driver {
-    public static final GsonBuilder BUILDER = new GsonBuilder();
-    public static final Gson GSON = BUILDER.setPrettyPrinting().create();
-    public static final Path WRITE_PATH = Paths.get("./drivers.json");
+    public static final GsonBuilder BUILDER = new GsonBuilder(); // bul
+    public static final Gson GSON = BUILDER.setPrettyPrinting().create(); // bul dagy
+    public static final Path WRITE_PATH = Paths.get("./drivers.json"); // bul dagy lishiy toist bul jerge lishnie
     private String id;
     private String driver;
     private String bus;
