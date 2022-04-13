@@ -12,9 +12,9 @@ import java.nio.file.StandardOpenOption;
 import java.util.Random;
 
 public class Truck {
-    public static final GsonBuilder BUILDER = new GsonBuilder();
-    public static final Gson GSON = BUILDER.setPrettyPrinting().create();
-    public static final Path WRITE_PATH = Paths.get("./truck.json");
+    public static final GsonBuilder BUILDER = new GsonBuilder(); // bul lishnie
+    public static final Gson GSON = BUILDER.setPrettyPrinting().create(); // bul dagy lishnie
+    public static final Path WRITE_PATH = Paths.get("./truck.json"); // bul dagy lishnie
     private int id;
     private String name;
     private String driver;
@@ -62,7 +62,7 @@ public class Truck {
     public void setState(State state) {
         this.state = state;
     }
-    public static void  makeTruck() {
+    public static void  makeTruck() { // bul method vaabshe keregi jok
         Truck[] trucks = {
                 new Truck(1, "Chevrolet", null, State.ON_BASE),
                 new Truck(2, "Toyota ", null, State.ON_BASE),
@@ -79,7 +79,7 @@ public class Truck {
         }
     }
 
-    public static void writeTruckFile(String object) {
+    public static void writeTruckFile(String object) { // bul method bashka jerde bolous kerek
         Path write = Paths.get(String.valueOf(WRITE_PATH));
         try {
             Files.writeString(write, object, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
@@ -88,7 +88,7 @@ public class Truck {
         }
     }
 
-    public static String readTruckFile() {
+    public static String readTruckFile() { // bul dagy bashka jerde bolush kerek
         String json = "";
         try {
             FileReader fileReader = new FileReader(String.valueOf(WRITE_PATH));
@@ -102,7 +102,7 @@ public class Truck {
         }
         return json;
     }
-    public void changeDriver(Truck truck, com.company.models.Driver driver) {
+    public void changeDriver(Truck truck, com.company.models.Driver driver) { // bul jakshy birok bir az kata bul methoddu bashka jaka koiso dagy bolo turgan bolup kalyptyr
         if (truck.getState().equals(State.ON_BASE)) {
             truck.setDriver(driver.getDriver());
             driver.setBus(truck.getName());
@@ -112,7 +112,7 @@ public class Truck {
             System.out.println("You can't change the driver!");
         }
     }
-    public void startDriving(Truck truck, com.company.models.Driver driver) {
+    public void startDriving(Truck truck, com.company.models.Driver driver) { // bul dagy startDriving ge okshosh
         if (truck.getState().equals(State.ON_BASE)) {
             if (truck.getDriver() != null) {
                 truck.setState(State.ON_ROUTE);
@@ -135,7 +135,7 @@ public class Truck {
         }
     }
 
-    public void startRepair(Truck truck, Driver driver) {
+    public void startRepair(Truck truck, Driver driver) { // bul daga jogorudagydai ele eken
         if (truck.getState().equals(State.ON_BASE)) {
             truck.setState(State.ON_REPAIR);
             System.out.println("Truck is on repairing now!");
