@@ -46,7 +46,8 @@ public class Driver {
     public void setDriver(String driver) {
         this.driver = driver;
     }
-
+    
+    // bul method bul jaka bolboit 
     public static void getDrivers() {
 
         Driver[] drivers = {
@@ -65,6 +66,7 @@ public class Driver {
         }
     }
 
+        // bul method bul jaka bolboit 
     public static void writeDriverFile(String object) {
         Path write = Paths.get(String.valueOf(WRITE_PATH));
         try {
@@ -74,6 +76,7 @@ public class Driver {
         }
     }
 
+        // bul method bul jaka bolboit 
     public static String readDriverFile() {
         String json = "";
         try {
@@ -89,6 +92,7 @@ public class Driver {
         return json;
     }
 
+        // bul method bul jaka bolboit 
     public static void getInfo(Truck truck) {
         System.out.println("N: " + truck.getId());
         System.out.println("Name: " + truck.getName());
